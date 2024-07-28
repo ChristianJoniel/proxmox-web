@@ -22,7 +22,6 @@ import {
   SidebarSpacer,
 } from '@/components/sidebar'
 import { SidebarLayout } from '@/components/sidebar-layout'
-import proxmoxLogo from '../../../public/img/proxmox.svg'
 import {
     ArrowRightStartOnRectangleIcon,
     // ChevronDownIcon,
@@ -46,9 +45,7 @@ import { useAuth } from '@/hooks/auth'
 import Loading from '@/app/(app)/Loading'
 import Image from 'next/image'
 
-function AccountDropdownMenu({ anchor }) {
-    const { logout } = useAuth()
-    const { user } = useAuth({ middleware: 'auth' })
+function AccountDropdownMenu({ anchor, user, logout }) {
 
     if (!user) {
         return <Loading />
@@ -80,7 +77,12 @@ function AccountDropdownMenu({ anchor }) {
 
 export function ApplicationLayout({ children }) {
   let pathname = usePathname()
-    const events = []
+  const { logout } = useAuth()
+  const { user } = useAuth({ middleware: 'auth' })
+  const initials = user?.name.split(' ').map((word) => word[0]).join('')
+
+  let events
+  events = []
   return (
     <SidebarLayout
       navbar={
@@ -101,7 +103,7 @@ export function ApplicationLayout({ children }) {
           <SidebarHeader>
             <Dropdown>
               <SidebarItem  >
-                <Image src={proxmoxLogo} width={25} height={25}  alt={"Logo"}/>
+                <Image src="/img/proxmox.svg" width={25} height={25}  alt={"Logo"}/>
                 <SidebarLabel>Proxmox</SidebarLabel>
               </SidebarItem>
             </Dropdown>
@@ -154,17 +156,18 @@ export function ApplicationLayout({ children }) {
             <Dropdown>
               <DropdownButton as={SidebarItem}>
                 <span className="flex min-w-0 items-center gap-3">
-                  <Avatar src="/users/erica.jpg" className="size-10" square alt="" />
+                  <Avatar className="size-10" square initials={initials} alt="" />
+
                   <span className="min-w-0">
-                    <span className="block truncate text-sm/5 font-medium text-zinc-950 dark:text-white">Erica</span>
+                    <span className="block truncate text-sm/5 font-medium text-zinc-950 dark:text-white">{user?.name}</span>
                     <span className="block truncate text-xs/5 font-normal text-zinc-500 dark:text-zinc-400">
-                      erica@example.com
+                      {user?.email}
                     </span>
                   </span>
                 </span>
                 <ChevronUpIcon />
               </DropdownButton>
-              <AccountDropdownMenu anchor="top start" />
+              <AccountDropdownMenu anchor="top start" user={user} logout={logout} />
             </Dropdown>
           </SidebarFooter>
         </Sidebar>
