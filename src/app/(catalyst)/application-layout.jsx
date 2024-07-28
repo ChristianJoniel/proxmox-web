@@ -42,14 +42,12 @@ import {
 } from '@heroicons/react/20/solid'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '@/hooks/auth'
-import Loading from '@/app/(app)/Loading'
+// import Loading from '@/app/(app)/Loading'
 import Image from 'next/image'
+import Loading from "@/app/(app)/Loading"
 
-function AccountDropdownMenu({ anchor, user, logout }) {
-
-    if (!user) {
-        return <Loading />
-    }
+function AccountDropdownMenu({ anchor }) {
+  const { logout } = useAuth()
 
     return (
     <DropdownMenu className="min-w-64" anchor={anchor}>
@@ -77,10 +75,13 @@ function AccountDropdownMenu({ anchor, user, logout }) {
 
 export function ApplicationLayout({ children }) {
   let pathname = usePathname()
-  const { logout } = useAuth()
+
   const { user } = useAuth({ middleware: 'auth' })
   const initials = user?.name.split(' ').map((word) => word[0]).join('')
 
+  if (!user) {
+    return <Loading />
+  }
   let events
   events = []
   return (
@@ -91,7 +92,7 @@ export function ApplicationLayout({ children }) {
           <NavbarSection>
             <Dropdown>
               <DropdownButton as={NavbarItem}>
-                <Avatar src="/users/erica.jpg" square />
+                <Image src="/img/proxmox.svg" width={25} height={25} alt="Logo" />
               </DropdownButton>
               <AccountDropdownMenu anchor="bottom end" />
             </Dropdown>
@@ -167,7 +168,7 @@ export function ApplicationLayout({ children }) {
                 </span>
                 <ChevronUpIcon />
               </DropdownButton>
-              <AccountDropdownMenu anchor="top start" user={user} logout={logout} />
+              <AccountDropdownMenu anchor="top start" />
             </Dropdown>
           </SidebarFooter>
         </Sidebar>

@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import { forwardRef } from 'react'
 import { TouchTarget } from './button'
 import { Link } from './link'
+import Image from 'next/image'
 
 export function Avatar({ src = null, square = false, initials, alt = '', className, ...props }) {
   return (
@@ -30,7 +31,7 @@ export function Avatar({ src = null, square = false, initials, alt = '', classNa
           </text>
         </svg>
       )}
-      {src && <img className="size-full" src={src} alt={alt} />}
+      {src && <Image className="size-full" width={25} height={50} src={src} alt={alt} />}
     </span>
   )
 }

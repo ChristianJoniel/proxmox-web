@@ -5,10 +5,9 @@ import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AuthSessionStatus from '@/app/(auth)/AuthSessionStatus'
-import {Description, Field, FieldGroup, Fieldset, Label} from "@/components/fieldset"
+import {Field, FieldGroup, Fieldset, Label} from "@/components/fieldset"
 import {Input, InputError} from "@/components/input"
 import {Button} from "@/components/button"
-import {Checkbox, CheckboxField, CheckboxGroup} from "@/components/checkbox"
 import {Text} from "@/components/text"
 
 const Login = () => {
@@ -21,7 +20,7 @@ const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [shouldRemember, setShouldRemember] = useState(false)
+  const [shouldRemember] = useState(false)
   const [errors, setErrors] = useState([])
   const [status, setStatus] = useState(null)
 

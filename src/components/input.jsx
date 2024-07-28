@@ -88,12 +88,12 @@ export const Input = forwardRef(function Input(
   )
 })
 
-export const InputError = ({ messages = [], className = '' }) => (
+export const InputError = ({ messages = [] }) => (
   <>
     {messages.length > 0 && (
       <>
         {messages.map((message, index) => (
-          <ErrorMessage>{message}</ErrorMessage>
+          <ErrorMessage key={index}>{message}</ErrorMessage>
         ))}
       </>
     )}

@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { getEvent, getEventOrders } from '@/data'
 import { ChevronLeftIcon } from '@heroicons/react/16/solid'
 import { notFound } from 'next/navigation'
+import Image from "next/image"
 
 export async function generateMetadata({ params }) {
   let event = await getEvent(params.id)
@@ -35,7 +36,7 @@ export default async function Event({ params }) {
       <div className="mt-4 flex flex-wrap items-end justify-between gap-4">
         <div className="flex flex-wrap items-center gap-6">
           <div className="w-32 shrink-0">
-            <img className="aspect-[3/2] rounded-lg shadow" src={event.imgUrl} alt="" />
+            <Image className="aspect-[3/2] rounded-lg shadow" src={event.imgUrl} alt="" />
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
