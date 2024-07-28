@@ -1,9 +1,5 @@
 'use client'
 
-// import Button from '@/stockcomponents/Button'
-// import Input from '@/stockcomponents/Input'
-// import InputError from '@/stockcomponents/InputError'
-// import Label from '@/stockcomponents/Label'
 import {Link} from '@/components/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
@@ -13,7 +9,6 @@ import {Description, Field, FieldGroup, Fieldset, Label} from "@/components/fiel
 import {Input, InputError} from "@/components/input"
 import {Button} from "@/components/button"
 import {Checkbox, CheckboxField, CheckboxGroup} from "@/components/checkbox"
-import {log} from "next/dist/server/typescript/utils"
 import {Text} from "@/components/text"
 
 const Login = () => {

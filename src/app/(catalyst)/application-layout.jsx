@@ -109,7 +109,7 @@ export function ApplicationLayout({ children }) {
 
           <SidebarBody>
             <SidebarSection>
-              <SidebarItem href="/home" current={pathname === '/home'}>
+              <SidebarItem href="/dashboard" current={pathname === '/dashboard'}>
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
