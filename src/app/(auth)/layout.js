@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import AuthCard from '@/app/(auth)/AuthCard'
 import ApplicationLogo from '@/stockcomponents/ApplicationLogo'
-// import Image from 'next/image'
-// import proxmoxLogo from '../../../public/img/proxmox.png'
 
 export const metadata = {
     title: 'Laravel',

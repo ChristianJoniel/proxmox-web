@@ -1,6 +1,7 @@
 import * as Headless from '@headlessui/react'
 import clsx from 'clsx'
 import { forwardRef } from 'react'
+import {ErrorMessage} from "@/components/fieldset"
 
 export function InputGroup({ children }) {
   return (
@@ -86,3 +87,15 @@ export const Input = forwardRef(function Input(
     </span>
   )
 })
+
+export const InputError = ({ messages = [], className = '' }) => (
+  <>
+    {messages.length > 0 && (
+      <>
+        {messages.map((message, index) => (
+          <ErrorMessage>{message}</ErrorMessage>
+        ))}
+      </>
+    )}
+  </>
+)
