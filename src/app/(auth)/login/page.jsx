@@ -80,7 +80,7 @@ const Login = () => {
           {/*</CheckboxGroup>*/}
 
           <div className="flex items-center justify-end mt-4">
-            <Link href="/forgot-password"><Text>Forgot Password?</Text></Link>
+            <Link href={"/forgot-password"}><Text>Forgot Password?</Text></Link>
             {/*<Link*/}
             {/*  href="/forgot-password">*/}
             {/*  Forgot your password?*/}
